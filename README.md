@@ -65,6 +65,6 @@ python3 maquinaTuring.py mt1.json 111111
 Saída esperada:
 Não
 
-OBSERVAÇÕES
+OBSERVAÇÕES:
 
-- Caso seja passado na entrada uma palavra com simbolo fora do alfabeto informado no .json da maquina de turing, a resposta pode ser Sim ou Nao, portanto, utilize somente palavras dentro do alfabeto para teste
+- Caso seja passado na entrada uma palavra com simbolo fora do alfabeto informado no .json da maquina de turing, a resposta pode ser Sim ou Nao dependendo do estado momentaneo da maquina. Portanto, utilize somente palavras dentro do alfabeto para teste.
