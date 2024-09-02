@@ -100,7 +100,7 @@ class Automato:
 
 # main
 if len(sys.argv) != 3:
-    print("Usar: python3 mt.py [MT.json] [Palavra]")
+    print("Usar: python3 maquinaTuring.py [MT.json] [Palavra]")
     sys.exit(1)
 
 readjson = sys.argv[1]
