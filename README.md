@@ -18,6 +18,8 @@ ESTRUTURA DO PROJETO
   - mt2.json
   - mt3.json
   - mt4.json
+  - mt5.json
+  - mt6.json
 
 COMO FUNCIONA
 1. Definição da Máquina de Turing (JSON):
@@ -28,7 +30,24 @@ COMO FUNCIONA
      - Estado inicial.
      - Estado(s) final(is).
      - Transições (definidas como uma lista de tuplas que descrevem o estado atual, símbolo lido, próximo estado, símbolo a ser escrito e a direção do cabeçote).
-
+   - A máquina é não deterministica, ou seja, de um estado, para um mesmo simbolo no cabeçote, podemos ir para um ou mais outros estados.
+   
+   - Como o não determinismo foi implementado:
+Uma maquina de Turing não deterministica gera uma "árvore de execução", ou seja, um caminho pode originar vários outros caminhos,
+que podem gerar vários outros caminho... ex de uma execução:
+	O
+       / \
+      O   O
+      	 / \
+      	O   O
+E assim por diante.
+Para dar suporte a isso, TEMOS QUE FAZER UM ESTRUTURA QUE NÃO DE PREFERÊNCIA A NENHUMA ÁRVORE EM ESPECÍFICO. EVITANDO CAIR EM
+LOOPS. COMO APRESENTADOS NOS CASOS mt-v1 à mt-v4.
+Para isso, temos um estrutura de fila (First-In First-Out). Com ela, partindo de um estado inicial, que gere dois outros estados por exemplo
+e1 e e2. Teremos na fila a execução de e1 e depois uma execução de e2, e não uma execução de toda árvore de derivação de cada uma,
+pois isso poderia gerar um loop.
+	
+      
 2. Execução:
    - A simulação é iniciada através de uma linha de comando, onde se passa o arquivo JSON da máquina e a palavra de entrada.
    - O simulador lê a fita e aplica as transições definidas na máquina, percorrendo os estados até que uma decisão seja tomada: a palavra é aceita (Sim) ou rejeitada (Não).
@@ -54,16 +73,20 @@ Execução:
    - [MT.json] é o caminho para o arquivo JSON que define a máquina de Turing.
    - [Palavra] é a palavra de entrada que será verificada pela máquina.
 
-Exemplo de Uso:
-python3 MaquinaTuring.py mt1.json 000000
 
+Exemplo de Uso:
+```bash
+python3 maquinaTuring.py mt-v1.json 000
+```
 Saída esperada:
 Sim
 
-python3 maquinaTuring.py mt1.json 111111
-
+```bash
+python3 maquinaTuring.py mt-v1.json 111
+```
 Saída esperada:
 Não
+
 
 OBSERVAÇÕES:
 
